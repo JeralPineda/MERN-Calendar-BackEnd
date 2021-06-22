@@ -35,7 +35,10 @@ router.post(
 router.put(
    '/:id',
    [
-      check(),
+      check('title', 'El titulo es obligatorio').not().isEmpty(),
+      check('start', 'Fecha inicio es obligatoria').custom(isDate),
+      check('end', 'Fecha de finalización es obligatoria').custom(isDate),
+      check('id', 'No es un id de Mongo valido').isMongoId(),
       validarCampos, //
    ],
    actualizarEvento
