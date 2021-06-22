@@ -24,4 +24,12 @@ const EventoSchema = Schema({
    },
 });
 
+// Configuración para que se muestre solo la información que necesito ver
+EventoSchema.method('toJSON', function () {
+   const { __v, _id, ...object } = this.toObject(); //Referencia a todo el objeto
+   object.id = _id; // Remplazo en el object
+
+   return object;
+});
+
 module.exports = model('Evento', EventoSchema);
