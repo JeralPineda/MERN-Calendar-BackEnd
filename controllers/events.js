@@ -52,7 +52,7 @@ const actualizarEvento = async (req, res = response) => {
 
       //   Verificar que el evento existe
       if (!evento) {
-         res.status(404).json({
+         return res.status(404).json({
             ok: false,
             msg: 'Evento no existe por ese id',
          });
@@ -60,7 +60,7 @@ const actualizarEvento = async (req, res = response) => {
 
       //   Verificar si la persona que creo el evento es el mismo que lo desea actualizar
       if (evento.user.toString() !== uid) {
-         res.status(401).json({
+         return res.status(401).json({
             ok: false,
             msg: 'No tiene privilegio de editar este evento',
          });
@@ -99,7 +99,7 @@ const eliminarEvento = async (req, res = response) => {
 
       //   Verificar que el evento existe
       if (!evento) {
-         res.status(404).json({
+         return res.status(404).json({
             ok: false,
             msg: 'Evento no existe por ese id',
          });
@@ -107,7 +107,7 @@ const eliminarEvento = async (req, res = response) => {
 
       //   Verificar si la persona que creo el evento es el mismo que lo desea actualizar
       if (evento.user.toString() !== uid) {
-         res.status(401).json({
+         return res.status(401).json({
             ok: false,
             msg: 'No tiene privilegio de editar este evento',
          });

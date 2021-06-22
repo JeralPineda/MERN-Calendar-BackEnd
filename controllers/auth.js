@@ -12,7 +12,7 @@ const crearUsuario = async (req, res = response) => {
 
       //   verificar que el usuario existe
       if (usuario) {
-         res.status(400).json({
+         return res.status(400).json({
             ok: false,
             msg: 'Ya existe un usuario con este correo',
          });
@@ -54,7 +54,7 @@ const loginUsuario = async (req, res = response) => {
 
       //   verificar que el usuario existe
       if (!usuario) {
-         res.status(400).json({
+         return res.status(400).json({
             ok: false,
             msg: 'El usuario o la contraseña es incorrecto',
          });
@@ -64,7 +64,7 @@ const loginUsuario = async (req, res = response) => {
       const validPaswword = bcrypt.compareSync(password, usuario.password);
 
       if (!validPaswword) {
-         res.status(400).json({
+         return res.status(400).json({
             ok: false,
             msg: 'El usuario o la contraseña es incorrecto',
          });
