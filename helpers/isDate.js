@@ -7,7 +7,8 @@ const isDate = (value) => {
    }
 
    const fecha = moment(value);
-   if (fecha.isValid) {
+
+   if (fecha.isValid()) {
       return true;
    } else {
       return false;
