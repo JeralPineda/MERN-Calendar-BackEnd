@@ -19,7 +19,7 @@ const EventoSchema = Schema({
    user: {
       //Relación
       type: Schema.Types.ObjectId,
-      ref: 'Usuarios',
+      ref: 'Usuario',
       required: true,
    },
 });
