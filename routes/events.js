@@ -48,7 +48,7 @@ router.put(
 router.delete(
    '/:id',
    [
-      check(),
+      check('id', 'No es un id de Mongo valido').isMongoId(),
       validarCampos, //
    ],
    eliminarEvento
